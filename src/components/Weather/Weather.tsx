@@ -1,8 +1,8 @@
+import React, {useMemo} from "react";
 import {useWeather} from "../../api/api";
-import * as React from "react";
 import {useAppSelector} from "../../redux/hooks";
 import { Name, Temperature, Wrapper, Details } from "./Weather.styles";
-import {useMemo} from "react";
+
 
 const Weather = () => {
     const { lat, lon, name, state, country } = useAppSelector((state) => state.location)

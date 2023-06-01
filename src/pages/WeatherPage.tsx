@@ -1,21 +1,20 @@
-import * as React from 'react';
-
+import React from "react";
 import Weather from "../components/Weather/Weather";
 import { useAppSelector } from "../redux/hooks";
 import Search from "../components/Search/Search";
-import * as s from "./WeatherPage.styles";
+import {Wrapper, Header} from "./WeatherPage.styles";
 import Checkbox from "../components/Checkbox/Checkbox";
 
 const WeatherPage = () => {
     const isLocationEmpty = useAppSelector((state) => state.location.empty)
 
     return (
-        <s.Wrapper>
+        <Wrapper>
             <Checkbox />
-            <s.Header>Weather App</s.Header>
+            <Header>Weather App</Header>
             <Search />
             {!isLocationEmpty ? <Weather/> : null}
-        </s.Wrapper>
+        </Wrapper>
     );
 }
 

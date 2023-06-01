@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const Wrapper = styled('div')`
+export const Wrapper = styled("div")`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,19 +10,19 @@ export const Wrapper = styled('div')`
   margin-top: 30px;
 `;
 
-export const Name = styled('p')`
+export const Name = styled("p")`
   font-size: 22px;
   font-weight: 500;
   margin-bottom: 0;
 `;
 
-export const Details = styled('p')`
+export const Details = styled("p")`
   font-size: 12px;
   font-weight: 300;
   margin-top: 0;
 `;
 
-export const Temperature = styled('p')`
+export const Temperature = styled("p")`
   font-size: 20px;
   font-weight: 400;
 `;

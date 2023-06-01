@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import WeatherPage from "./pages/WeatherPage";
-import * as s from "./App.styles";
+import {Main} from "./App.styles";
 
 function App() {
     return (
-        <s.Main>
+        <Main>
             <WeatherPage/>
-        </s.Main>
+        </Main>
     );
 }
 

@@ -1,16 +1,15 @@
-import {useEffect, useState} from 'react';
-import * as React from "react";
-import {Theme, ThemeProvider} from '@emotion/react'
+import React, {useEffect, useState} from "react";
+import {Theme, ThemeProvider} from "@emotion/react"
 import {
     createTheme as createMuiTheme,
     ThemeProvider as MuiThemeProvider,
     Theme as MuiTheme
-} from '@mui/material/styles';
+} from "@mui/material/styles";
 import {useAppSelector} from "../../redux/hooks";
 
 export type ThemeName = "light" | "dark";
 
-declare module '@emotion/react' {
+declare module "@emotion/react" {
     export interface Theme {
         color: string,
         bgColor: string,
@@ -36,7 +35,7 @@ const darkTheme = {
 const muiLightTheme = createMuiTheme();
 const muiDarkTheme = createMuiTheme({
     palette: {
-        mode: 'dark',
+        mode: "dark",
     },
 });
 
@@ -46,8 +45,8 @@ const CustomThemeProvider = ({ children }: React.PropsWithChildren) => {
     const [muiTheme, setMuiTheme] = useState<MuiTheme>(muiLightTheme);
 
     useEffect(() => {
-        setTheme(themeName === 'light' ? lightTheme : darkTheme)
-        setMuiTheme(themeName === 'light' ? muiLightTheme : muiDarkTheme)
+        setTheme(themeName === "light" ? lightTheme : darkTheme)
+        setMuiTheme(themeName === "light" ? muiLightTheme : muiDarkTheme)
     }, [themeName])
 
     return (
