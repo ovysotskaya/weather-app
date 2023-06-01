@@ -1,4 +1,4 @@
-import React, {useMemo} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import {useWeather} from "../../api/api";
 import {useAppSelector} from "../../redux/hooks";
 import { Name, Temperature, Wrapper, Details } from "./Weather.styles";
@@ -6,16 +6,33 @@ import { Name, Temperature, Wrapper, Details } from "./Weather.styles";
 
 const Weather = () => {
     const { lat, lon, name, state, country } = useAppSelector((state) => state.location)
+    const [updatedAt, setUpdatedAt] = useState(+new Date())
 
-    const {data} = useWeather(lat, lon)
+    const {data} = useWeather(lat, lon, updatedAt)
+
+    const [dataCopy, setDataCopy] = useState(data)
+
+    useEffect(() => {
+        const weatherUpdateInterval = setInterval(() => {
+            setUpdatedAt(+new Date())
+        }, 30000)
+
+        return () => {
+            clearInterval(weatherUpdateInterval);
+        }
+    })
+
+    useEffect(() => {
+        if (data) setDataCopy(data)
+    }, [data])
 
     const weatherImageSrc = useMemo(() => {
-        if (data && data.weather.length) {
-            return `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+        if (dataCopy && dataCopy.weather.length) {
+            return `https://openweathermap.org/img/wn/${dataCopy.weather[0].icon}@2x.png`
         }
 
         return ""
-    }, [data])
+    }, [dataCopy])
 
     const locationDetails = useMemo(() => {
         return [state, country].filter((v) => v && v.length).join(", ")
@@ -25,11 +42,11 @@ const Weather = () => {
         <Wrapper>
             <Name>{name}</Name>
             <Details>{locationDetails}</Details>
-            <Temperature>{!data ? "Loading..." : Math.round(data.main.temp)}
+            <Temperature>{!dataCopy ? "Loading..." : Math.round(dataCopy.main.temp)}
                 <sup>&deg;C</sup>
             </Temperature>
             <img src={weatherImageSrc} alt="weather"/>
-            <p>{!data ? "Loading..." : data.weather.map((item) => item.main)}</p>
+            <p>{!dataCopy ? "Loading..." : dataCopy.weather.map((item) => item.main)}</p>
         </Wrapper>
     )
 }

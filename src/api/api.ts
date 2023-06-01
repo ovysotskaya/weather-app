@@ -25,8 +25,8 @@ type Weather = {
     name: string
 }
 
-export function useWeather(lat: number, lon: number) {
-    return useQuery(["weather", lat, lon], (): Promise<Weather> =>
+export function useWeather(lat: number, lon: number, timestamp: number) {
+    return useQuery(["weather", lat, lon, timestamp], (): Promise<Weather> =>
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=e0c7bd40251ff403da5ba03cefac5d73&units=metric`)
             .then((r) => r.json())
     )
