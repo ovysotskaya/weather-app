@@ -29,7 +29,7 @@ const lightTheme = {
 const darkTheme = {
     color: "#FFF",
     bgColor: "#333",
-    bgColor2: "#F5F5F5",
+    bgColor2: "#DCDCDC",
     name: "dark"
 } as Theme
 

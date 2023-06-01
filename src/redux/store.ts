@@ -1,6 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit'
-import locationReducer from './locationSlice'
-import themeReducer from './themeSlice'
+import { configureStore } from "@reduxjs/toolkit"
+import locationReducer from "./locationSlice"
+import themeReducer from "./themeSlice"
 
 const store = configureStore({
     reducer: {

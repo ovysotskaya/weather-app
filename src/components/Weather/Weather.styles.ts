@@ -13,6 +13,13 @@ export const Wrapper = styled('div')`
 export const Name = styled('p')`
   font-size: 22px;
   font-weight: 500;
+  margin-bottom: 0;
+`;
+
+export const Details = styled('p')`
+  font-size: 12px;
+  font-weight: 300;
+  margin-top: 0;
 `;
 
 export const Temperature = styled('p')`
