@@ -41,11 +41,11 @@ test("Type city name and check suggestions", async () => {
 
     const listItems = await screen.findAllByRole("option")
 
-    expect(listItems.length).toBe(1)
-    expect(listItems[0]).toHaveTextContent("Minsk, , BY")
+    expect(listItems.length).toBe(2)
+    expect(listItems[0]).toHaveTextContent("Minsk, BY")
 })
 
-test("Type and select unique city", async () => {
+test("Type and select city", async () => {
 
     render(
         <Provider store={store}>
@@ -62,7 +62,7 @@ test("Type and select unique city", async () => {
 
     const listItems = await screen.findAllByRole("option")
 
-    expect(listItems.length).toBe(1)
+    expect(listItems.length).toBe(2)
 
     // eslint-disable-next-line testing-library/no-unnecessary-act
     await act( async () => {

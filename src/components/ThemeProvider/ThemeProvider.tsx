@@ -58,5 +58,4 @@ const CustomThemeProvider = ({ children }: React.PropsWithChildren) => {
     );
 };
 
-export default CustomThemeProvider
-
+export default CustomThemeProvider;

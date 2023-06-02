@@ -50,7 +50,7 @@ const Search = () => {
                 )}
                 renderOption={(props, {name, lat, lon, state, country}) => (
                     <li {...props} key={`${name}_${lat}_${lon}`}>
-                        {[name, state, country].filter((v) => v && v.length).join(", ")}
+                        {[name, state, country].filter((v) => v).join(", ")}
                     </li>
                 )}
             />

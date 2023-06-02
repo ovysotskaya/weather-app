@@ -35,7 +35,7 @@ const Weather = () => {
     }, [dataCopy])
 
     const locationDetails = useMemo(() => {
-        return [state, country].filter((v) => v && v.length).join(", ")
+        return [state, country].filter((v) => v).join(", ")
     }, [state, country])
 
     return (
@@ -46,7 +46,7 @@ const Weather = () => {
                 <sup>&deg;C</sup>
             </Temperature>
             <img src={weatherImageSrc} alt="weather"/>
-            <p>{!dataCopy ? "Loading..." : dataCopy.weather.map((item) => item.main)}</p>
+            <p>{!dataCopy ? "Loading..." : dataCopy.weather[0].main}</p>
         </Wrapper>
     )
 }
